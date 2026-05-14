@@ -37,7 +37,6 @@ export default function WorkoutDetails() {
     return <h1>Treino não encontrado</h1>;
   }
 
-  // TS entende que existe
   const safeWorkout = workout;
 
   function formatTime(totalSeconds: number) {
@@ -80,7 +79,7 @@ export default function WorkoutDetails() {
       name: safeWorkout.name,
       time: formatTime(seconds),
       calories: calculateCalories(),
-      date: new Date().toLocaleString()
+      date: new Date().getTime()
     });
 
     setShowFinishModal(true);
@@ -105,7 +104,7 @@ export default function WorkoutDetails() {
 
         </div>
 
-        {/* BARRA DE PROGRESSO */}
+        {/* PROGRESSO */}
         <div className="progress-container">
 
           <span>
@@ -130,10 +129,10 @@ export default function WorkoutDetails() {
         {safeWorkout.exercises.map((exercise) => (
 
           <div
+            key={exercise.id}
             className={`exercise ${
               done.includes(exercise.id) ? "done" : ""
             }`}
-            key={exercise.id}
             onClick={() => toggleExercise(exercise.id)}
           >
 

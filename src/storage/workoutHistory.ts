@@ -3,7 +3,7 @@ export type WorkoutHistoryItem = {
   name: string;
   time: string;
   calories: number;
-  date: string;
+  date: number;
 };
 
 const KEY = "workout_history";
