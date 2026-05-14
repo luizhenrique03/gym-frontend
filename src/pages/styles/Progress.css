@@ -1,0 +1,82 @@
+.progress-page{
+    padding: 30px;
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    min-height: 100vh;
+}
+
+/* título */
+.progress-page h1{
+    color: black;
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+/* grid */
+.history-grid{
+    display: grid;
+
+    grid-template-columns: repeat(3, 320px);
+
+    justify-content: center;
+
+    gap: 24px;
+
+    margin-top: 30px;
+}
+
+/* card */
+.history-card{
+    background-color: #1e1e1e;
+
+    width: 320px;
+
+    padding: 24px;
+
+    border-radius: 16px;
+
+    transition: 0.2s;
+
+    min-height: 180px;
+
+    box-sizing: border-box;
+}
+
+/* hover */
+.history-card:hover{
+    transform: scale(1.02);
+}
+
+/* nome treino */
+.history-card h3{
+    color: white;
+
+    margin-bottom: 16px;
+
+    font-size: 20px;
+}
+
+/* infos */
+.history-card p{
+    color: white;
+
+    margin-bottom: 12px;
+
+    line-height: 1.5;
+
+    font-size: 15px;
+}
+
+/* sem histórico */
+.empty-history{
+    color: #666;
+
+    margin-top: 20px;
+
+    font-size: 15px;
+}

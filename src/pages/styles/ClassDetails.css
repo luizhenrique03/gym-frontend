@@ -1,0 +1,147 @@
+.class-details-page{
+    padding: 30px;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    min-height: 100vh;
+}
+
+/* título */
+.class-details-page h1{
+    color: black;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+/* professor */
+.teacher{
+    color: #444;
+
+    font-size: 16px;
+
+    margin-bottom: 15px;
+}
+
+/* badge confirmado */
+.confirmed-badge{
+    display: inline-block;
+
+    background: #d9fbe8;
+
+    color: #00a85a;
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #00cc6a;
+}
+
+/* infos */
+.class-details-info{
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+
+    color: black;
+
+    font-size: 15px;
+}
+
+/* cards de informação */
+.class-details-info span{
+    background: #f2f2f2;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    transition: 0.2s;
+}
+
+.class-details-info span:hover{
+    background: #ebebeb;
+
+    transform: scale(1.01);
+}
+
+/* descrição */
+.description-box{
+    background: #f2f2f2;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    margin-bottom: 30px;
+
+    transition: 0.2s;
+}
+
+.description-box:hover{
+    background: #ebebeb;
+}
+
+.description-box h2{
+    color: black;
+
+    margin-bottom: 12px;
+}
+
+.description-box p{
+    color: #444;
+
+    line-height: 1.6;
+}
+
+/* botão */
+.class-details-page button{
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #00ff88;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    font-size: 15px;
+}
+
+.class-details-page button:hover{
+    background: #00cc6a;
+
+    transform: scale(1.01);
+}
+
+/* confirmado */
+.class-details-page button.confirmed{
+    background: #1e1e1e;
+
+    color: white;
+}
+
+.class-details-page button.confirmed:hover{
+    background: #2c2c2c;
+}

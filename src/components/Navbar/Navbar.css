@@ -1,0 +1,87 @@
+.navbar{
+    display: flex;   
+    align-items: center;
+    justify-content: space-between;
+    padding:15px 30px;
+    background-color: #333333;
+    color: #F5F5F5;
+
+    position: relative; /* IMPORTANTE pra centralizar */
+}
+
+/* CENTRO REAL */
+.navbar-center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: clamp(20px, 5vw, 65px);
+    white-space: nowrap;
+}
+
+/* LINKS */
+.navbar a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* HOVER (corrigido) */
+.navbar a:hover{
+    color: #89CFF0 ;
+}
+
+/* BOTÃO */
+.menu-btn{
+    font-size: 20px;
+    background:none;
+    border:none;
+    color: white;
+    cursor: pointer;
+}
+
+/* DIREITA */
+.navbar-right{
+    margin-left: auto;
+    position: relative; /* 🔥 necessário pro dropdown */
+}
+
+/* (opcional, pode manter ou remover) */
+.navbar-left {
+    margin-right: 90px;
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ITENS DO MENU */
+.dropdown-menu a,
+.dropdown-menu .sair {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+/* HOVER */
+.dropdown-menu a:hover,
+.dropdown-menu .sair:hover {
+    color: #89CFF0;
+}
+
+body{
+    background-color: #F5F5F5;
+}
