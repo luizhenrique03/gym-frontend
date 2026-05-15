@@ -1,147 +1,167 @@
-.class-details-page{
+.class-details-page {
     padding: 30px;
-
     max-width: 900px;
-
     margin: 0 auto;
-
     min-height: 100vh;
+    background: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+
+/* ========================= */
+/* HEADER (onde fica o voltar) */
+/* ========================= */
+
+.class-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
 }
 
 /* título */
-.class-details-page h1{
-    color: black;
-
-    font-size: 32px;
-
-    margin-bottom: 10px;
+.class-details-page h1 {
+    color: #0f172a;
+    font-size: 34px;
+    margin: 0;
+    font-weight: 800;
 }
 
 /* professor */
-.teacher{
-    color: #444;
-
+.teacher {
+    color: #475569;
     font-size: 16px;
-
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
-/* badge confirmado */
-.confirmed-badge{
-    display: inline-block;
+/* ========================= */
+/* BOTÃO VOLTAR (INDEPENDENTE) */
+/* ========================= */
 
-    background: #d9fbe8;
+.back-button {
+    width: fit-content;
 
-    color: #00a85a;
-
-    padding: 8px 14px;
-
-    border-radius: 999px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-
-    margin-bottom: 25px;
-
-    border: 1px solid #00cc6a;
-}
-
-/* infos */
-.class-details-info{
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-
-    margin-bottom: 30px;
-
-    color: black;
-
-    font-size: 15px;
-}
-
-/* cards de informação */
-.class-details-info span{
-    background: #f2f2f2;
-
-    padding: 14px;
-
-    border-radius: 12px;
-
-    transition: 0.2s;
-}
-
-.class-details-info span:hover{
-    background: #ebebeb;
-
-    transform: scale(1.01);
-}
-
-/* descrição */
-.description-box{
-    background: #f2f2f2;
-
-    padding: 20px;
-
-    border-radius: 14px;
-
-    margin-bottom: 30px;
-
-    transition: 0.2s;
-}
-
-.description-box:hover{
-    background: #ebebeb;
-}
-
-.description-box h2{
-    color: black;
-
-    margin-bottom: 12px;
-}
-
-.description-box p{
-    color: #444;
-
-    line-height: 1.6;
-}
-
-/* botão */
-.class-details-page button{
-    width: 100%;
-
-    padding: 14px;
+    background: #e2e8f0;
+    color: #0f172a;
 
     border: none;
+    border-radius: 8px;
 
-    border-radius: 12px;
-
-    background: #00ff88;
-
-    font-weight: bold;
+    padding: 5px 10px;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    font-size: 12px;
+    font-weight: 500;
 
-    font-size: 15px;
+    transition: 0.2s ease;
 }
 
-.class-details-page button:hover{
-    background: #00cc6a;
+.back-button:hover {
+    background: #cbd5e1;
+    transform: translateY(-1px);
+}
 
-    transform: scale(1.01);
+/* ========================= */
+/* BADGE CONFIRMADO */
+/* ========================= */
+
+.confirmed-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+    color: #166534;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    border: 1px solid #86efac;
+}
+
+/* ========================= */
+/* INFOS */
+/* ========================= */
+
+.class-details-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.class-details-info span {
+    background: #ffffff;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    color: #0f172a;
+    font-size: 15px;
+    transition: 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.class-details-info span:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* ========================= */
+/* DESCRIÇÃO */
+/* ========================= */
+
+.description-box {
+    background: #ffffff;
+    padding: 22px;
+    border-radius: 16px;
+    margin-bottom: 28px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.description-box h2 {
+    color: #0f172a;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.description-box p {
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* ========================= */
+/* BOTÃO PRINCIPAL (NÃO MEXE NO VOLTAR) */
+/* ========================= */
+
+.presence-button {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+
+    font-weight: 600;
+    font-size: 15px;
+
+    cursor: pointer;
+    transition: 0.25s;
+
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.presence-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
 }
 
 /* confirmado */
-.class-details-page button.confirmed{
-    background: #1e1e1e;
-
-    color: white;
+.presence-button.confirmed {
+    background: #0f172a;
+    box-shadow: none;
 }
 
-.class-details-page button.confirmed:hover{
-    background: #2c2c2c;
+.presence-button.confirmed:hover {
+    background: #1e293b;
 }

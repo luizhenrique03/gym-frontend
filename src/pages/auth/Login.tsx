@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import "../styles/Login.css";
 
+import { getUser } from "../../storage/userStorage";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +18,14 @@ function Login() {
       return;
     }
 
-    if (email === "luiz@teste.com" && password === "Luiz@123") {
+    const user = getUser();
+
+    if (!user) {
+      alert("Nenhum usuário cadastrado");
+      return;
+    }
+
+    if (email === user.email && password === user.password) {
       loginMock();
       navigate("/dashboard");
     } else {
@@ -41,7 +50,17 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button onClick={handleLogin}>Entrar</button>
+        <button onClick={handleLogin}>
+          Entrar
+        </button>
+
+        {/* 👇 LINK DE CADASTRO */}
+        <p className="login-link">
+          Não tem cadastro?{" "}
+          <span onClick={() => navigate("/register")}>
+            Clique aqui
+          </span>
+        </p>
       </div>
     </div>
   );

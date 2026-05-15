@@ -1,69 +1,107 @@
-import './Navbar.css';
-import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import "./Navbar.css";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUser } from "../../storage/userStorage";
 
 export default function Navbar() {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const menuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
-    // Fecha ao clicar fora
-    useEffect(() => {
-        function handleClickOutside(event: MouseEvent) {
-            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-                setMenuOpen(false);
-            }
-        }
+  // 🔥 estado local para forçar re-render
+  const [user, setUser] = useState(getUser());
 
-        document.addEventListener("mousedown", handleClickOutside);
+  // 🔥 escuta mudanças no localStorage via evento global
+  useEffect(() => {
+    function handleUpdate() {
+      setUser(getUser());
+    }
 
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
+    window.addEventListener("userUpdated", handleUpdate);
 
-    return (
-        <nav className="navbar">
-            <div className="navbar-left">
-                <h2 className="logo">logo</h2>
-            </div>
+    return () => {
+      window.removeEventListener("userUpdated", handleUpdate);
+    };
+  }, []);
 
-            <div className="navbar-center">
-                <Link to="/dashboard">Dashboard</Link>
-                <Link to="/workouts">Exercises</Link>
-                <Link to="/diets">nutrição</Link>
-                <Link to="/classes">Aulas</Link>
-                <Link to="/progress">progresso</Link>
-            </div>
+  const firstLetter = user?.name?.charAt(0).toUpperCase() || "U";
 
-            <div className="navbar-right" ref={menuRef}>
-                <button 
-                    className="menu-btn"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                >
-                    ☰
-                </button>
+  return (
+    <aside className="sidebar">
 
-                {menuOpen && (
-                    <div className="dropdown-menu">
-                        <Link 
-                            to="/perfil" 
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Perfil
-                        </Link>
+      {/* LOGO */}
+      <div className="sidebar-top">
+        <h1 className="logo">
+          GYM
+          <span>FITNESS</span>
+        </h1>
+      </div>
 
-                        <button 
-                            className="sair"
-                            onClick={() => {
-                                console.log("logout");
-                                setMenuOpen(false);
-                            }}
-                        >
-                            Sair
-                        </button>
-                    </div>
-                )}
-            </div>
-        </nav>
-    );
+      {/* LINKS */}
+      <nav className="sidebar-links">
+
+        <Link
+          to="/dashboard"
+          className={location.pathname === "/dashboard" ? "active" : ""}
+        >
+          🏠 Dashboard
+        </Link>
+
+        <Link
+          to="/workouts"
+          className={location.pathname.includes("/workouts") ? "active" : ""}
+        >
+          💪 Treinos
+        </Link>
+
+        <Link
+          to="/nutrition"
+          className={location.pathname === "/nutrition" ? "active" : ""}
+        >
+          🥗 Nutrição
+        </Link>
+
+        <Link
+          to="/classes"
+          className={location.pathname === "/classes" ? "active" : ""}
+        >
+          🏃 Aulas
+        </Link>
+
+        <Link
+          to="/progress"
+          className={location.pathname === "/progress" ? "active" : ""}
+        >
+          📊 Progresso
+        </Link>
+
+      </nav>
+
+      {/* FOOTER */}
+      <div className="sidebar-footer">
+
+        <div className="profile">
+
+          {/* AVATAR */}
+          <div className="profile-avatar">
+            {user?.photo ? (
+              <img src={user.photo} alt="avatar" />
+            ) : (
+              firstLetter
+            )}
+          </div>
+
+          {/* INFO */}
+          <div>
+            <h4>{user?.name || "Usuário"}</h4>
+
+            <Link to="/profile">
+              <p>Ver perfil</p>
+            </Link>
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+  );
 }

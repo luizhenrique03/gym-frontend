@@ -34,3 +34,19 @@ h2{
     text-align: center;
     margin-bottom: 20px;
 }
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ccc;
+  text-align: center;
+}
+
+.login-link span {
+  color: #4caf50;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-link span:hover {
+  text-decoration: underline;
+}

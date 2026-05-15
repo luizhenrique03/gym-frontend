@@ -14,14 +14,18 @@ import Progress from "../pages/progress/progresso";
 import Classes from "../pages/classes/Classes";
 import ClassDetails from "../pages/classes/ClassDetails";
 
+import Nutrition from "../pages/nutrition/Nutrition";
+
+import Profile from "../pages/profile/profile"; // 👈 aqui
+
 export default function AppRoutes() {
 
   return (
     <Routes>
 
-      <Route path="/" element={<Login />} />
-
       <Route path="/register" element={<Register />} />
+
+      <Route path="/" element={<Login />} />
 
       <Route element={<ProtectedRoute />}>
 
@@ -30,6 +34,10 @@ export default function AppRoutes() {
         <Route path="/plans" element={<h1>Plans</h1>} />
 
         <Route path="/workouts" element={<Workouts />} />
+
+        <Route path="/nutrition" element={<Nutrition />} />
+
+        <Route path="/profile" element={<Profile />} />
 
         <Route
           path="/workouts/:id"

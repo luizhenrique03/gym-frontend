@@ -1,0 +1,370 @@
+.nutrition-page{
+    margin-left: 250px;
+    padding: 30px;
+    min-height: 100vh;
+    background-color: #f5f7fb;
+}
+
+/* HEADER */
+.nutrition-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.nutrition-header h1{
+    color: #111827;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.nutrition-header p{
+    color: #6b7280;
+    font-size: 15px;
+}
+
+/* CARDS SUPERIORES */
+.nutrition-stats{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 24px;
+
+    margin-bottom: 30px;
+}
+
+.nutrition-card{
+    background: white;
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+
+    transition: 0.2s;
+}
+
+.nutrition-card:hover{
+    transform: translateY(-3px);
+}
+
+.nutrition-card span{
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+.nutrition-card h2{
+    color: #111827;
+
+    font-size: 34px;
+
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.nutrition-card small{
+    color: #9ca3af;
+}
+
+/* CONTEÚDO */
+.nutrition-content{
+    display: flex;
+
+    gap: 24px;
+
+    align-items: flex-start;
+}
+
+/* ESQUERDA */
+.nutrition-left{
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+/* DIREITA */
+.nutrition-right{
+    width: 380px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+}
+
+/* BOX */
+.nutrition-box{
+    background: white;
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.nutrition-box h2{
+    color: #111827;
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+/* REFEIÇÃO */
+.meal-card{
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    margin-bottom: 18px;
+}
+
+.meal-top{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.meal-top h3{
+    color: #111827;
+}
+
+.meal-top button{
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.meal-top button:hover{
+    background: #1d4ed8;
+}
+
+.meal-card p{
+    color: #4b5563;
+
+    margin-bottom: 10px;
+}
+
+/* ÁGUA */
+.water-header{
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.water-header span{
+    color: #2563eb;
+
+    font-weight: bold;
+}
+
+.water-bar{
+    width: 100%;
+
+    height: 14px;
+
+    background: #e5e7eb;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    margin-bottom: 20px;
+}
+
+.water-progress{
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #2563eb
+    );
+
+    border-radius: 999px;
+}
+
+.water-button{
+    width: 100%;
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition: 0.2s;
+}
+
+.water-button:hover{
+    background: #1d4ed8;
+}
+
+/* IA */
+.ai-card{
+    background: linear-gradient(
+        180deg,
+        #2563eb,
+        #1d4ed8
+    );
+
+    padding: 24px;
+
+    border-radius: 24px;
+
+    color: white;
+
+    box-shadow: 0 10px 30px rgba(37,99,235,0.25);
+}
+
+.ai-card h2{
+    margin-bottom: 20px;
+}
+
+.ai-messages{
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.ai-message{
+    background: rgba(255,255,255,0.12);
+
+    padding: 14px;
+
+    border-radius: 14px;
+
+    line-height: 1.5;
+}
+
+.ai-input{
+    display: flex;
+
+    gap: 10px;
+}
+
+.ai-input input{
+    flex: 1;
+
+    border: none;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    outline: none;
+}
+
+.ai-input button{
+    background: white;
+
+    color: #2563eb;
+
+    border: none;
+
+    padding: 14px 18px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.ai-input button:hover{
+    transform: scale(1.03);
+}
+
+/* DICA */
+.tip-card{
+    background: white;
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.tip-card h2{
+    color: #111827;
+
+    margin-bottom: 18px;
+}
+
+.tip-card p{
+    color: #4b5563;
+
+    line-height: 1.7;
+}
+
+/* RESPONSIVO */
+@media(max-width: 1200px){
+
+    .nutrition-content{
+        flex-direction: column;
+    }
+
+    .nutrition-right{
+        width: 100%;
+    }
+}
+
+@media(max-width: 900px){
+
+    .nutrition-stats{
+        grid-template-columns: 1fr;
+    }
+
+    .nutrition-page{
+        margin-left: 0;
+        padding: 20px;
+    }
+}

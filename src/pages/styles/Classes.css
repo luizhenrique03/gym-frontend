@@ -1,26 +1,29 @@
 .classes-page{
     padding: 30px;
 
-    max-width: 1400px;
+    margin-left: 260px;
 
-    margin: 0 auto;
+    min-height: 100vh;
+
+    background-color: #F5F7FB;
 }
 
-.classes-page h1{
-    color: black;
+/* TÍTULO */
 
-    font-size: 28px;
+.classes-page h1{
+    color: #1e293b;
+
+    font-size: 32px;
 
     margin-bottom: 10px;
 }
 
 /* GRID */
+
 .classes-grid{
     display: grid;
 
-    grid-template-columns: repeat(3, 320px);
-
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 320px));
 
     gap: 24px;
 
@@ -28,18 +31,17 @@
 }
 
 /* CARD */
-.class-card{
-    background-color: #1e1e1e;
 
-    width: 320px;
+.class-card{
+    background-color: white;
 
     padding: 24px;
 
-    border-radius: 16px;
+    border-radius: 20px;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    transition: 0.25s;
 
     min-height: 190px;
 
@@ -48,35 +50,39 @@
     position: relative;
 
     border: 2px solid transparent;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .class-card:hover{
-    transform: scale(1.02);
+    transform: translateY(-4px);
 
-    border-color: #00cc6a;
+    border-color: #2563eb;
 }
 
 /* CARD CONFIRMADO */
+
 .confirmed-card{
+    border: 2px solid #2563eb;
+
     background: linear-gradient(
-        135deg,
-        #1e1e1e,
-        #252525
+        180deg,
+        #ffffff 0%,
+        #eff6ff 100%
     );
 
-    border: 2px solid #00cc6a;
-
-    box-shadow: 0 4px 15px rgba(0, 204, 106, 0.15);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.15);
 }
 
-/* selo confirmado */
+/* SELO */
+
 .confirmed-label{
     position: absolute;
 
     top: 14px;
     right: 14px;
 
-    background: #00cc6a;
+    background: #2563eb;
 
     color: white;
 
@@ -89,25 +95,28 @@
     font-weight: bold;
 }
 
-/* título */
+/* TÍTULO */
+
 .class-card h2{
-    color: white;
+    color: #1e293b;
 
     margin-bottom: 18px;
 
     font-size: 22px;
 }
 
-/* professor */
+/* PROFESSOR */
+
 .class-card p{
-    color: #d9d9d9;
+    color: #64748b;
 
     margin-bottom: 20px;
 
     font-size: 15px;
 }
 
-/* infos */
+/* INFOS */
+
 .class-info{
     display: flex;
 
@@ -115,28 +124,29 @@
 
     gap: 12px;
 
-    color: white;
-
     margin-top: auto;
 }
 
 .class-info span{
-    background: rgba(255,255,255,0.06);
+    background: #f1f5f9;
 
     padding: 10px 12px;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     font-size: 14px;
+
+    color: #334155;
 
     transition: 0.2s;
 }
 
 .class-info span:hover{
-    background: rgba(255,255,255,0.12);
+    background: #dbeafe;
 }
 
 /* RESPONSIVO */
+
 @media(max-width: 1100px){
 
     .classes-grid{
@@ -152,5 +162,10 @@
 
     .class-card{
         width: 100%;
+    }
+
+    .classes-page{
+        margin-left: 0;
+        padding: 20px;
     }
 }

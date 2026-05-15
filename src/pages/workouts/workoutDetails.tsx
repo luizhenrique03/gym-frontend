@@ -8,7 +8,6 @@ import { saveHistory } from "../../storage/workoutHistory";
 import { useEffect, useState } from "react";
 
 export default function WorkoutDetails() {
-
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -22,7 +21,6 @@ export default function WorkoutDetails() {
   const [showFinishModal, setShowFinishModal] = useState(false);
 
   useEffect(() => {
-
     if (!isRunning) return;
 
     const interval = setInterval(() => {
@@ -30,7 +28,6 @@ export default function WorkoutDetails() {
     }, 1000);
 
     return () => clearInterval(interval);
-
   }, [isRunning]);
 
   if (!workout) {
@@ -40,7 +37,6 @@ export default function WorkoutDetails() {
   const safeWorkout = workout;
 
   function formatTime(totalSeconds: number) {
-
     const min = Math.floor(totalSeconds / 60);
     const sec = totalSeconds % 60;
 
@@ -55,7 +51,6 @@ export default function WorkoutDetails() {
   );
 
   function toggleExercise(exerciseId: number) {
-
     setDone((prev) =>
       prev.includes(exerciseId)
         ? prev.filter((id) => id !== exerciseId)
@@ -64,14 +59,12 @@ export default function WorkoutDetails() {
   }
 
   function calculateCalories() {
-
     return safeWorkout.exercises
       .filter((ex) => done.includes(ex.id))
       .reduce((total, ex) => total + (ex.calories || 0), 0);
   }
 
   function finishWorkout() {
-
     setIsRunning(false);
 
     saveHistory({
@@ -87,78 +80,86 @@ export default function WorkoutDetails() {
 
   return (
     <div>
-
       <Navbar />
 
       <div className="workout-details-page">
 
-        <h1>{safeWorkout.name}</h1>
+        <div className="workout-card">
 
-        <p className="focus">{safeWorkout.focus}</p>
+          {/* HEADER */}
+          <div className="workout-header">
 
-        <div className="info">
+            <button
+              className="back-button"
+              onClick={() => navigate("/workouts")}
+            >
+              ← Voltar
+            </button>
 
-          <span>⏱ {formatTime(seconds)}</span>
+            <div className="workout-title">
+              <h1>{safeWorkout.name}</h1>
+              <p className="focus">{safeWorkout.focus}</p>
+            </div>
 
-          <span>🔥 {calculateCalories()} kcal</span>
+          </div>
 
-        </div>
+          {/* INFO */}
+          <div className="info">
+            <span>⏱ {formatTime(seconds)}</span>
+            <span>🔥 {calculateCalories()} kcal</span>
+          </div>
 
-        {/* PROGRESSO */}
-        <div className="progress-container">
+          {/* PROGRESSO */}
+          <div className="progress-container">
+            <span>
+              Progresso: {completedExercises}/{totalExercises}
+            </span>
 
-          <span>
-            Progresso: {completedExercises}/{totalExercises}
-          </span>
+            <div className="progress-bar">
+              <div
+                className="progress-fill"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
 
-          <div className="progress-bar">
+            <small>{progress}% concluído</small>
+          </div>
 
+          <h2>Exercícios</h2>
+
+          {safeWorkout.exercises.map((exercise) => (
             <div
-              className="progress-fill"
-              style={{ width: `${progress}%` }}
-            />
+              key={exercise.id}
+              className={`exercise ${
+                done.includes(exercise.id) ? "done" : ""
+              }`}
+              onClick={() => toggleExercise(exercise.id)}
+            >
+              <input
+                type="checkbox"
+                checked={done.includes(exercise.id)}
+                readOnly
+              />
 
-          </div>
+              <h3>{exercise.name}</h3>
 
-          <small>{progress}% concluído</small>
+              <span>{exercise.sets}</span>
+            </div>
+          ))}
+
+          {/* BOTÃO FINALIZAR (CLASSE ESPECÍFICA!) */}
+          <button
+            className="finish-button"
+            onClick={finishWorkout}
+          >
+            Finalizar Treino
+          </button>
 
         </div>
-
-        <h2>Exercícios</h2>
-
-        {safeWorkout.exercises.map((exercise) => (
-
-          <div
-            key={exercise.id}
-            className={`exercise ${
-              done.includes(exercise.id) ? "done" : ""
-            }`}
-            onClick={() => toggleExercise(exercise.id)}
-          >
-
-            <input
-              type="checkbox"
-              checked={done.includes(exercise.id)}
-              readOnly
-            />
-
-            <h3>{exercise.name}</h3>
-
-            <span>{exercise.sets}</span>
-
-          </div>
-
-        ))}
-
-        <button onClick={finishWorkout}>
-          Finalizar Treino
-        </button>
 
         {/* MODAL */}
         {showFinishModal && (
-
           <div className="modal-overlay">
-
             <div className="modal">
 
               <h2>Confirmar encerramento</h2>
@@ -180,13 +181,10 @@ export default function WorkoutDetails() {
               </button>
 
             </div>
-
           </div>
-
         )}
 
       </div>
-
     </div>
   );
 }

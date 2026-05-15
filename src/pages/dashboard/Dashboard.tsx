@@ -3,77 +3,75 @@ import "../styles/Dashboard.css";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+
 import { workouts } from "../../data/mockWorkouts";
 import { getHistory } from "../../storage/workoutHistory";
 
-export default function Dashboard() {
+import { classes } from "../../data/mockClasses";
+import { hasConfirmed } from "../../storage/classPresence";
 
+import { getNutritionHistory } from "../../storage/nutritionHistory";
+
+type Exercise = {
+  id: number;
+  name: string;
+  sets: string;
+  calories: number;
+};
+
+type NutritionEntry = {
+  date: string;
+  calories: number;
+  protein: number;
+  carbs: number;
+  water: number;
+};
+
+export default function Dashboard() {
   const navigate = useNavigate();
 
+  const todayKey = new Date().toISOString().split("T")[0];
+
+  // =======================
+  // WORKOUT HISTORY (SEMANA)
+  // =======================
   const [history, setHistory] = useState(getHistory());
 
   useEffect(() => {
-
-    const update = () => {
-      setHistory(getHistory());
-    };
-
+    const update = () => setHistory(getHistory());
+    update();
     window.addEventListener("focus", update);
-
-    return () => {
-      window.removeEventListener("focus", update);
-    };
-
+    return () => window.removeEventListener("focus", update);
   }, []);
 
-  // 📅 início da semana
   const startOfWeek = useMemo(() => {
-
     const now = new Date();
-
     const start = new Date(now);
-
     start.setDate(now.getDate() - now.getDay());
-
     start.setHours(0, 0, 0, 0);
-
     return start;
-
   }, []);
 
-  // 🔥 treinos apenas da semana atual
   const weeklyHistory = history.filter((item) => {
-
-    const itemDate = new Date(item.date);
-
-    return itemDate >= startOfWeek;
-
+    return new Date(item.date) >= startOfWeek;
   });
 
-  // ✅ quantidade concluída
   const completed = weeklyHistory.length;
 
-  // 🔥 calorias reais da semana
   const totalCalories = weeklyHistory.reduce(
-    (total, item) => total + item.calories,
+    (t, i) => t + i.calories,
     0
   );
 
-  // 📊 porcentagem da barra
   const progressPercent =
-    workouts.length > 0
-      ? (completed / workouts.length) * 100
-      : 0;
+    workouts.length > 0 ? (completed / workouts.length) * 100 : 0;
 
-  // ✅ último treino concluído
   const lastWorkout = weeklyHistory[0];
 
-  // ✅ índice do último treino
   const lastWorkoutIndex = workouts.findIndex(
-    (workout) => workout.id === lastWorkout?.id
+    (w) => w.id === lastWorkout?.id
   );
 
-  // ✅ próximo treino automático
   const nextWorkout =
     workouts[
       lastWorkoutIndex >= 0 &&
@@ -82,78 +80,147 @@ export default function Dashboard() {
         : 0
     ];
 
+  // =======================
+  // NUTRIÇÃO (SÓ LÊ, NÃO CALCULA)
+  // =======================
+  const [nutritionHistory, setNutritionHistory] = useState(
+    getNutritionHistory()
+  );
+
+  useEffect(() => {
+    const update = () => setNutritionHistory(getNutritionHistory());
+    update();
+    window.addEventListener("focus", update);
+    return () => window.removeEventListener("focus", update);
+  }, []);
+
+  const todayNutrition = nutritionHistory.find(
+    (item: NutritionEntry) => item.date === todayKey
+  );
+
+  const totalProtein = todayNutrition?.protein ?? 0;
+  const totalCarbs = todayNutrition?.carbs ?? 0;
+  const totalWater = todayNutrition?.water ?? 0;
+
+  // =======================
+  // AULAS
+  // =======================
+  const confirmedClasses = classes.filter((item) =>
+    hasConfirmed(item.id)
+  );
+
   return (
     <>
       <Navbar />
 
       <div className="dashboard">
+        <div className="dashboard-header">
+          <div>
+            <h1>Olá, Luiz 👋</h1>
+            <p>Continue evoluindo hoje.</p>
+          </div>
+        </div>
 
-        <div className="top-section">
+        {/* CARDS */}
+        <div className="stats-grid">
+          <div className="stats-card">
+            <span>🔥 Calorias (treino)</span>
+            <h2>{totalCalories}</h2>
+            <small>Essa semana</small>
+          </div>
 
-          <div className="left-side">
+          <div className="stats-card">
+            <span>🏋️ Treinos</span>
+            <h2>{completed}</h2>
+            <small>Concluídos</small>
+          </div>
 
-            <div className="meta">
+          <div className="stats-card">
+            <span>📈 Progresso</span>
+            <h2>{Math.round(progressPercent)}%</h2>
+            <small>Meta semanal</small>
+          </div>
 
-              <h2>Meta semanal 💪</h2>
+          {/* NUTRIÇÃO (SÓ MOSTRA O QUE JÁ FOI SALVO) */}
+          <div className="stats-card">
+            <span>🍗 Proteína</span>
+            <h2>{totalProtein}g</h2>
+            <small>Hoje</small>
+          </div>
+
+          <div className="stats-card">
+            <span>🍞 Carboidratos</span>
+            <h2>{totalCarbs}g</h2>
+            <small>Hoje</small>
+          </div>
+
+          <div className="stats-card">
+            <span>💧 Água</span>
+            <h2>{(totalWater / 1000).toFixed(1)}L</h2>
+            <small>Hoje</small>
+          </div>
+        </div>
+
+        {/* CONTEÚDO */}
+        <div className="dashboard-content">
+          <div className="dashboard-left">
+            <div className="dashboard-card">
+              <div className="card-header">
+                <h2>Meta semanal 💪</h2>
+                <span>
+                  {completed}/{workouts.length}
+                </span>
+              </div>
 
               <div className="progress-bar">
-
                 <div
                   className="progress"
                   style={{ width: `${progressPercent}%` }}
                 />
-
               </div>
-
-              <p>
-                {completed}/{workouts.length} treinos esta semana
-              </p>
-
             </div>
-
-            <div className="cards">
-
-              <div className="card">
-                🔥 {totalCalories} kcal
-              </div>
-
-              <div className="card">
-                ⚡ {completed} concluídos
-              </div>
-
-            </div>
-
           </div>
 
-          {/* CARD PRÓXIMO TREINO */}
-          <div
-            className="next-workout"
-            onClick={() => navigate(`/workouts/${nextWorkout.id}`)}
-            style={{ cursor: "pointer" }}
-          >
+          <div className="dashboard-right">
+            <div
+              className="next-workout-card"
+              onClick={() =>
+                navigate(`/workouts/${nextWorkout.id}`)
+              }
+            >
+              <div className="next-top">
+                <span>Próximo treino</span>
+                <h2>{nextWorkout.name}</h2>
+              </div>
 
-            <h2>Próximo Treino</h2>
+              <p>{nextWorkout.duration}</p>
 
-            <p>
-              {nextWorkout.name} - {nextWorkout.duration}
-            </p>
-
-            <div className="exercise-list">
-
-              {nextWorkout.exercises.map((ex) => (
-
-                <p key={ex.id}>
-                  • {ex.name} ({ex.sets})
-                </p>
-
-              ))}
-
+              <div className="exercise-list">
+                {nextWorkout.exercises.map((ex: Exercise) => (
+                  <div key={ex.id} className="exercise-item">
+                    <span>{ex.name}</span>
+                    <small>{ex.sets}</small>
+                  </div>
+                ))}
+              </div>
             </div>
 
-          </div>
+            {confirmedClasses.map((item) => (
+              <div key={item.id} className="confirmed-class-card">
+                <div className="confirmed-header">
+                  <span>✓ Aula confirmada</span>
+                  <h2>{item.title}</h2>
+                </div>
 
+                <div className="confirmed-info">
+                  <p>👨‍🏫 {item.teacher}</p>
+                  <p>📅 {item.date}</p>
+                  <p>⏰ {item.time}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
       </div>
     </>
   );
