@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Register.css";
+import "./Register.css";
 
 import { saveUser } from "../../storage/userStorage";
 
 export default function Register() {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +18,7 @@ export default function Register() {
   const navigate = useNavigate();
 
   function handleRegister() {
+
     if (
       !name ||
       !email ||
@@ -36,7 +38,6 @@ export default function Register() {
       return;
     }
 
-    // 🔥 SALVA O USUÁRIO
     saveUser({
       name,
       email,
@@ -54,61 +55,76 @@ export default function Register() {
 
   return (
     <div className="Login-container">
+
       <div className="Login-box">
+
         <h2>Registro</h2>
 
-        <input
-          type="text"
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+        <div className="register-grid">
 
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Senha"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <input
-          type="password"
-          placeholder="Confirmar Senha"
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="CPF"
+            value={cpf}
+            onChange={(e) => setCpf(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="CPF"
-          onChange={(e) => setCpf(e.target.value)}
-        />
+          <input
+            type="date"
+            value={birthDate}
+            onChange={(e) => setBirthDate(e.target.value)}
+          />
 
-        <input
-          type="date"
-          onChange={(e) => setBirthDate(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="CEP"
+            value={cep}
+            onChange={(e) => setCep(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="CEP"
-          onChange={(e) => setCep(e.target.value)}
-        />
+          <input
+            type="text"
+            placeholder="Telefone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
 
-        <input
-          type="text"
-          placeholder="Telefone"
-          onChange={(e) => setPhone(e.target.value)}
-        />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="Confirmar Senha"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+
+        </div>
 
         <button onClick={handleRegister}>
           Criar Conta
         </button>
+
       </div>
+
     </div>
   );
 }

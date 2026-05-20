@@ -1,7 +1,6 @@
-import { workouts } from "../../data/mockWorkouts";
-import WorkoutCard from "../../components/WorkoutCard/WorkoutCard";
-import "../styles/Workouts.css";
-import Navbar from "../../components/Navbar/Navbar";
+import { workouts } from "../../../data/mockWorkouts";
+import WorkoutCard from "../../../components/WorkoutCard/WorkoutCard";
+import "./Workouts.css";
 import { useNavigate } from "react-router-dom";
 
 type Exercise = {
@@ -32,7 +31,7 @@ export default function Workouts() {
 
   return (
     <div>
-      <Navbar />
+     
 
       <div className="workouts-page">
 

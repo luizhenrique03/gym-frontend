@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import "../styles/Login.css";
+import "./Login.css";
 
 import { getUser } from "../../storage/userStorage";
 

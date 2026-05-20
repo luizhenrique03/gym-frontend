@@ -1,9 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 
-import Navbar from "../../components/Navbar/Navbar";
-import { workouts } from "../../data/mockWorkouts";
-import "../../pages/styles/WorkoutDetails.css";
-import { saveHistory } from "../../storage/workoutHistory";
+import { workouts } from "../../../data/mockWorkouts";
+import "./WorkoutDetails.css";
+import { saveHistory } from "../../../storage/workoutHistory";
 
 import { useEffect, useState } from "react";
 
@@ -80,7 +79,7 @@ export default function WorkoutDetails() {
 
   return (
     <div>
-      <Navbar />
+      
 
       <div className="workout-details-page">
 

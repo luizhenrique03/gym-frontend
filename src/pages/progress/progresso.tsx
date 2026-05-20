@@ -1,8 +1,8 @@
 import { getHistory } from "../../storage/workoutHistory";
 
-import Navbar from "../../components/Navbar/Navbar";
 
-import "../styles/Progress.css";
+
+import "./Progress.css";
 
 export default function Progress() {
 
@@ -11,7 +11,7 @@ export default function Progress() {
   return (
     <div>
 
-      <Navbar />
+     
 
       <div className="progress-page">
 

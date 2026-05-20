@@ -1,16 +1,15 @@
-import Navbar from "../../components/Navbar/Navbar";
-import "../styles/Dashboard.css";
+import "./Dashboard.css";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 
-import { workouts } from "../../data/mockWorkouts";
-import { getHistory } from "../../storage/workoutHistory";
+import { workouts } from "../../../data/mockWorkouts";
+import { getHistory } from "../../../storage/workoutHistory";
 
-import { classes } from "../../data/mockClasses";
-import { hasConfirmed } from "../../storage/classPresence";
+import { classes } from "../../../data/mockClasses";
+import { hasConfirmed } from "../../../storage/classPresence";
 
-import { getNutritionHistory } from "../../storage/nutritionHistory";
+import { getNutritionHistory } from "../../../storage/nutritionHistory";
 
 type Exercise = {
   id: number;
@@ -110,8 +109,7 @@ export default function Dashboard() {
   );
 
   return (
-    <>
-      <Navbar />
+  
 
       <div className="dashboard">
         <div className="dashboard-header">
@@ -222,6 +220,5 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-    </>
   );
 }

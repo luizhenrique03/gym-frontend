@@ -1,14 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import { classes } from "../../data/mockClasses";
-import "../styles/ClassDetails.css";
+import { classes } from "../../../data/mockClasses";
+import "./ClassDetails.css";
 import { useState } from "react";
 
 import {
   savePresence,
   hasConfirmed,
   removePresence
-} from "../../storage/classPresence";
+} from "../../../storage/classPresence";
 
 export default function ClassDetails() {
   const { id } = useParams();
@@ -55,7 +54,7 @@ export default function ClassDetails() {
 
   return (
     <div>
-      <Navbar />
+      
 
       <div className="class-details-page">
 

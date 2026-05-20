@@ -1,0 +1,14 @@
+.admin-layout {
+  display: flex;
+}
+
+/* ÁREA DA DIREITA (conteúdo das páginas) */
+.admin-content {
+  margin-left: 250px; /* mesma largura da sidebar */
+  width: calc(100% - 250px);
+  min-height: 100vh;
+
+  background: #f1f5f9;
+  padding: 30px;
+  box-sizing: border-box;
+}

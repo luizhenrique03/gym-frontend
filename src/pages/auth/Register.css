@@ -1,0 +1,155 @@
+*{
+  box-sizing: border-box;
+}
+
+.Login-container {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f5f7fb 0%,
+      #eef2ff 100%
+    );
+}
+
+.Login-box {
+  width: 100%;
+  max-width: 720px;
+
+  padding: 40px;
+
+  background: white;
+
+  border-radius: 24px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.08);
+}
+
+.Login-box h2 {
+  text-align: center;
+
+  color: #111827;
+
+  font-size: 34px;
+
+  font-weight: 700;
+
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.register-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+.Login-box input {
+  width: 100%;
+
+  height: 56px;
+
+  padding: 0 18px;
+
+  border-radius: 16px;
+
+  border: 1px solid #d1d5db;
+
+  background: #f9fafb;
+
+  color: #111827;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: 0.2s;
+}
+
+.Login-box input::placeholder {
+  color: #9ca3af;
+}
+
+.Login-box input:focus {
+  border-color: #2563eb;
+
+  background: white;
+
+  box-shadow:
+    0 0 0 4px rgba(37,99,235,0.12);
+
+  transform: translateY(-1px);
+}
+
+.Login-box input[type="date"] {
+  color: #6b7280;
+}
+
+.Login-box button {
+  width: 100%;
+
+  height: 56px;
+
+  margin-top: 24px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.Login-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(37,99,235,0.25);
+}
+
+.Login-box button:active {
+  transform: scale(0.98);
+}
+
+/* RESPONSIVO */
+@media(max-width: 700px){
+
+  .register-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .Login-box{
+    padding: 30px 20px;
+  }
+
+  .Login-box h2{
+    font-size: 28px;
+  }
+}

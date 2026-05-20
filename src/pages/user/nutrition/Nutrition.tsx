@@ -1,7 +1,7 @@
-import Navbar from "../../components/Navbar/Navbar";
-import "../styles/Nutrition.css";
+
+import "./Nutrition.css";
 import { useMemo, useState, useEffect } from "react";
-import { saveNutrition } from "../../storage/nutritionHistory";
+import { saveNutrition } from "../../../storage/nutritionHistory";
 
 type Meal = {
   id: number;
@@ -182,8 +182,7 @@ export default function Nutrition() {
   // UI
   // ======================
   return (
-    <>
-      <Navbar />
+    
 
       <div className="nutrition-page">
         <div className="nutrition-header">
@@ -288,6 +287,5 @@ export default function Nutrition() {
           </div>
         </div>
       </div>
-    </>
   );
 }

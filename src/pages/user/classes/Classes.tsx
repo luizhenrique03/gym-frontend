@@ -1,14 +1,13 @@
-import Navbar from "../../components/Navbar/Navbar";
 
-import { classes } from "../../data/mockClasses";
+import { classes } from "../../../data/mockClasses";
 
-import "../styles/Classes.css";
+import "./Classes.css";
 
 import { useNavigate } from "react-router-dom";
 
 import {
   hasConfirmed
-} from "../../storage/classPresence";
+} from "../../../storage/classPresence";
 
 export default function Classes() {
 
@@ -17,7 +16,7 @@ export default function Classes() {
   return (
     <div>
 
-      <Navbar />
+      
 
       <div className="classes-page">
 

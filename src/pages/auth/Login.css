@@ -1,0 +1,151 @@
+.Login-container {
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0f0f0f 0%,
+      #151515 50%,
+      #1b1b1b 100%
+    );
+
+  padding: 20px;
+}
+
+.Login-box {
+  width: 100%;
+  max-width: 400px;
+
+  padding: 40px 32px;
+
+  border-radius: 24px;
+
+  background: rgba(20, 20, 20, 0.95);
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5);
+
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.Login-box h2 {
+  text-align: center;
+
+  color: white;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+
+  letter-spacing: 1px;
+}
+
+.Login-box input {
+  width: 100%;
+  height: 54px;
+
+  padding: 0 16px;
+
+  margin-bottom: 16px;
+
+  border-radius: 14px;
+
+  border: 1px solid #2d2d2d;
+
+  background: #111;
+
+  color: white;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+
+.Login-box input::placeholder {
+  color: #777;
+}
+
+.Login-box input:focus {
+  border-color: #4caf50;
+
+  box-shadow:
+    0 0 0 4px rgba(76, 175, 80, 0.15);
+
+  transform: translateY(-1px);
+}
+
+.Login-box button {
+  width: 100%;
+  height: 54px;
+
+  margin-top: 8px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(37,99,235,0.25)
+  );
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.Login-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.25);
+}
+
+.Login-box button:active {
+  transform: scale(0.98);
+}
+
+.login-link {
+  margin-top: 22px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  color: #9ca3af;
+}
+
+.login-link span {
+  color: rgba(37, 99, 235, 0.25);
+
+  margin-left: 5px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.login-link span:hover {
+  color: #66bb6a;
+
+  text-decoration: underline;
+}

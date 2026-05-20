@@ -1,0 +1,117 @@
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* HEADER */
+.user-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-details-header h1 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.user-details-header button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+/* CARD PRINCIPAL */
+.user-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.user-card h2 {
+  margin: 0;
+}
+
+.user-card p {
+  color: #64748b;
+}
+
+/* GRID INFO */
+.user-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.user-info-grid span {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* STATUS */
+.active {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.inactive {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* STATS */
+.user-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat-card {
+  background: white;
+  padding: 15px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* NUTRIÇÃO */
+.user-nutrition,
+.user-history {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+/* ACTIONS */
+.user-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.user-actions button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.edit {
+  background: #2563eb;
+  color: white;
+}
+
+.deactivate {
+  background: #f59e0b;
+  color: white;
+}
+
+.delete {
+  background: #dc2626;
+  color: white;
+}

@@ -1,10 +1,10 @@
-import Navbar from "../../components/Navbar/Navbar";
-import "../styles/Profile.css";
+
+import "./Profile.css";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { User } from "../../storage/userStorage";
-import { saveUser } from "../../storage/userStorage";
+import type { User } from "../../../storage/userStorage";
+import { saveUser } from "../../../storage/userStorage";
 
 // ======================
 // LOAD USER
@@ -29,12 +29,11 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <>
-        <Navbar />
+      
         <div className="profile-page">
           <h2>Nenhum usuário encontrado</h2>
         </div>
-      </>
+      
     );
   }
 
@@ -76,8 +75,7 @@ export default function Profile() {
   }
 
   return (
-    <>
-      <Navbar />
+  
 
       <div className="profile-page">
         <h1 className="profile-title">Meu Perfil 👤</h1>
@@ -135,6 +133,5 @@ export default function Profile() {
           </div>
         </div>
       </div>
-    </>
   );
 }
